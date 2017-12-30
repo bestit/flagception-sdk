@@ -24,7 +24,7 @@ class FeatureManager implements FeatureManagerInterface
     /**
      * The context decorator
      *
-     * @var ContextDecoratorInterface
+     * @var ContextDecoratorInterface|null
      */
     private $decorator;
 
@@ -32,9 +32,9 @@ class FeatureManager implements FeatureManagerInterface
      * FeatureManager constructor.
      *
      * @param FeatureActivatorInterface $activator
-     * @param ContextDecoratorInterface $decorator
+     * @param ContextDecoratorInterface|null $decorator
      */
-    public function __construct(FeatureActivatorInterface $activator, ContextDecoratorInterface $decorator)
+    public function __construct(FeatureActivatorInterface $activator, ContextDecoratorInterface $decorator = null)
     {
         $this->activator = $activator;
         $this->decorator = $decorator;
@@ -49,7 +49,10 @@ class FeatureManager implements FeatureManagerInterface
             $context = new Context();
         }
 
-        $context = $this->decorator->decorate($context);
+        if ($this->decorator !== null) {
+            $context = $this->decorator->decorate($context);
+        }
+
         return $this->activator->isActive($name, $context);
     }
 }

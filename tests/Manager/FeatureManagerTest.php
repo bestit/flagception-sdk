@@ -87,4 +87,18 @@ class FeatureManagerTest extends TestCase
 
         static::assertTrue($manager->isActive('feature_foo', $context));
     }
+
+    /**
+     * Test decorator is optional
+     *
+     * @return void
+     */
+    public function testFeatureWithoutDecorator()
+    {
+        $manager = new FeatureManager(
+            new ArrayActivator(['feature_foo'])
+        );
+
+        static::assertTrue($manager->isActive('feature_foo'));
+    }
 }
