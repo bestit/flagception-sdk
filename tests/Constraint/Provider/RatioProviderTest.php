@@ -46,7 +46,7 @@ class RatioProviderTest extends TestCase
         }
 
         # No really precise test / maybe fail at runtime.
-        static::assertGreaterThanOrEqual(10, $hits);
+        static::assertGreaterThanOrEqual(5, $hits);
         static::assertLessThanOrEqual(50, $hits);
 
         static::assertEquals('return mt_rand(0, 99) < 0.3 * 100', $expressionLanguage->compile('ratio(0.3)'));
