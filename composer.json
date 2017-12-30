@@ -1,0 +1,33 @@
+{
+  "name": "flagception/flagception",
+  "type": "lib",
+  "description": "Feature toggle on steroids.",
+  "keywords": ["feature", "feature-toggle", "feature-flags", "flags", "flagception", "rollout", "testing", "toggle"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michel Chowanski",
+      "email": "michel.chowanski@bestit-online.de"
+    }
+  ],
+  "require": {
+    "php": "^5.6||^7.0",
+    "symfony/expression-language": ">=2.7"
+  },
+  "require-dev": {
+    "phing/phing": "^2.15",
+    "phpunit/phpunit": "^5.5",
+    "squizlabs/php_codesniffer": "^2.8",
+    "php-coveralls/php-coveralls": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Flagception\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Flagception\\Tests\\": "tests"
+    }
+  }
+}
