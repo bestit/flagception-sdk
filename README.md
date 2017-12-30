@@ -1,5 +1,5 @@
 # Flagception
-**Feature toggle bundle on steroids!** Flagception is a simplest and powerful feature toggle library.
+Flagception is a simple and powerful feature toggle library.
 Only a few lines of configuration necessary - and still very flexible and expandable.
 
 [![Latest Stable Version](https://poser.pugx.org/flagception/flagception/v/stable)](https://packagist.org/packages/flagception/flagception)
