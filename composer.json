@@ -29,5 +29,8 @@
     "psr-4": {
       "Flagception\\Tests\\": "tests"
     }
+  },
+  "suggest": {
+    "flagception/contentful-activator": "Fetch feature flags from contentful."
   }
 }
