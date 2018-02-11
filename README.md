@@ -179,3 +179,77 @@ class MyClass
 ```
 
 This library ships an [ArrayDecorator](docs/decorator/array.md) and a [ChainDecorator](docs/decorator/chain.md).
+
+Using caching
+---------------------------
+The feature manager already caches the result with the hash of feature name and context data into the memory for your current request.
+So your activator don't will be called twice if you request a feature with same context.
+
+But sometimes it makes sense to cache the results persistent and not only in memory. So, you can set an optional cache which implement the PSR 
+`CacheItemPoolInterface`. You can set the cache period as second argument - it accepts `int` (seconds), a `DateInterval` or `null`, if you
+do not want that the cache expires.
+
+```php
+// MyClass.php
+class MyClass
+{
+    /** CacheItemPoolInterface */
+    private $cachePool;
+
+    public function doSomething()
+    {
+        $activator = new ArrayActivator(['your_feature_name']);
+
+        $manager = new FeatureManager($activator);
+        $manager->setCachePool($this->cachePool, 3600);
+
+        // This will call your activator
+        if ($manager->isActive('your_feature_name')) {
+            // do something
+        }
+        
+        // Second request will return the result from cache
+        if ($manager->isActive('your_feature_name')) {
+            // do something
+        }
+    }
+}
+```
+
+Using collector
+---------------------------
+The `ResultCollectorInterface` collects all results, the context and activator name. This is useful if you need this
+for logging or profiling. 
+
+Just create an instance of a class which implement the interface and append it:
+
+```php
+// MyClass.php
+class MyClass
+{
+    public function doSomething()
+    {
+        $activator = new ArrayActivator(['your_feature_name']);
+
+        $manager = new FeatureManager($activator);
+        
+        $collector = new ArrayResultCollector;
+        $manager->setCollector($collector);
+
+        if ($manager->isActive('your_feature_name')) {
+            // do something
+        }
+        
+        if ($manager->isActive('your_feature_name_2')) {
+            // do something
+        }
+        
+        if ($manager->isActive('your_feature_name_3')) {
+            // do something
+        }
+        
+        // Get all collected results
+        $results = $collector->all();
+    }
+}
+```

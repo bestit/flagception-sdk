@@ -3,6 +3,7 @@
 namespace Flagception\Activator;
 
 use Flagception\Model\Context;
+use Flagception\Model\Result;
 
 /**
  * Interface FeatureActivatorInterface
@@ -26,7 +27,7 @@ interface FeatureActivatorInterface
      * @param string $name
      * @param Context $context
      *
-     * @return bool
+     * @return bool|Result
      */
     public function isActive($name, Context $context);
 }
