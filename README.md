@@ -75,7 +75,8 @@ class MyClass
 ```
 
 This library ships an [ArrayActivator](docs/activator/array.md), a [ConstraintActivator](docs/activator/constraint.md), 
-a [EnvironmentActivator](docs/activator/environment.md) and a [ChainActivator](docs/activator/chain.md).
+a [EnvironmentActivator](docs/activator/environment.md), [CookieActivator](docs/activator/cookie.md) 
+and a [ChainActivator](docs/activator/chain.md).
 
 In most cases you will create your own activator (eg. for doctrine). Just implement the `FeatureActivatorInterface`.
 

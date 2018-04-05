@@ -40,7 +40,7 @@ class CookieActivator implements FeatureActivatorInterface
      * @param string $name
      * @param string $separator
      */
-    public function __construct(array $features, $name, $separator)
+    public function __construct(array $features, $name = 'flagception', $separator = ',')
     {
         $this->features = $features;
         $this->name = $name;
