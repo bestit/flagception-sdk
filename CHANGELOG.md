@@ -1,3 +1,7 @@
+## Unreleased
+### Added
+- Add new [CookieActivator](docs/activator/cookie.md) @migo315
+
 ## [1.1.0]
 ### Added
 - Add new [EnvironmentActivator](docs/activator/environment.md) @migo315
