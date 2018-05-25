@@ -4,13 +4,9 @@ namespace Flagception\Manager;
 
 use DateInterval;
 use Flagception\Activator\FeatureActivatorInterface as Activator;
-use Flagception\Collector\NullResultCollector;
-use Flagception\Collector\ResultCollectorInterface;
 use Flagception\Decorator\ContextDecoratorInterface as Decorator;
 use Flagception\Model\Context;
-use Flagception\Model\Result;
 use Psr\Cache\CacheItemPoolInterface;
-use Symfony\Component\Cache\Adapter\NullAdapter;
 
 /**
  * Class FeatureManager
@@ -23,7 +19,7 @@ class FeatureManager implements FeatureManagerInterface
     /**
      * Cache key
      */
-    const CACHE_KEY = 'flagception-memory';
+    const CACHE_KEY = 'flagception';
 
     /**
      * The feature activator
@@ -52,22 +48,14 @@ class FeatureManager implements FeatureManagerInterface
      *
      * @var int|DateInterval|null
      */
-    private $cachePoolTtl;
+    private $cacheTtl;
 
     /**
      * Short memory request cache
-     * Null if not initiated otherwise an array
      *
-     * @var array|null
+     * @var bool[]
      */
-    private $memory;
-
-    /**
-     * Result collector
-     *
-     * @var ResultCollectorInterface
-     */
-    private $collector;
+    private $memory = [];
 
     /**
      * FeatureManager constructor.
@@ -79,31 +67,18 @@ class FeatureManager implements FeatureManagerInterface
     {
         $this->activator = $activator;
         $this->decorator = $decorator;
-
-        $this->cachePool = new NullAdapter();
-        $this->collector = new NullResultCollector();
     }
 
     /**
      * Set a optional cache
      *
      * @param CacheItemPoolInterface $cachePool
-     * @param int|DateInterval|null $timeToLive
+     * @param int|DateInterval|null $ttl
      */
-    public function setCachePool(CacheItemPoolInterface $cachePool, $timeToLive = null)
+    public function setCache(CacheItemPoolInterface $cachePool, $ttl = 3600)
     {
         $this->cachePool = $cachePool;
-        $this->cachePoolTtl = $timeToLive;
-    }
-
-    /**
-     * Set optional collector
-     *
-     * @param ResultCollectorInterface $collector
-     */
-    public function setCollector(ResultCollectorInterface $collector)
-    {
-        $this->collector = $collector;
+        $this->cacheTtl = $ttl;
     }
 
     /**
@@ -119,37 +94,33 @@ class FeatureManager implements FeatureManagerInterface
             $context = $this->decorator->decorate($context);
         }
 
-        $hash = md5($name . '-' . $context->serialize());
+        $hash = static::CACHE_KEY . '-' . md5($name . '-' . $context->serialize());
 
-        // Load cache if not already done
-        $cacheItem = $this->cachePool->getItem(static::CACHE_KEY);
-        $this->memory = $this->memory === null && $cacheItem->isHit() ? $cacheItem->get() : [];
-
-        // Check if we have already a cached result
+        // Step 1: Try get from memory cache
         if (array_key_exists($hash, $this->memory)) {
-            $result = $this->memory[$hash];
-            $this->collector->add(new Result($name, $result, $context, 'cache'));
-
-            return $result;
+            return $this->memory[$hash];
         }
 
-        // Request result from activator
-        $result = $this->activator->isActive($name, $context);
+        // Step 2: Try get from (optional) cache
+        $cacheItem = null;
+        if ($this->cachePool !== null) {
+            $cacheItem = $this->cachePool->getItem($hash);
 
-        if ($result instanceof Result) {
-            $this->collector->add($result);
-            $this->memory[$hash] = $result->isActive();
-        } else {
-            $this->collector->add(
-                new Result($name, $result, $context, $result ? $this->activator->getName() : null)
-            );
-            $this->memory[$hash] = $result;
+            if ($cacheItem->isHit()) {
+                $this->memory[$hash] = $cacheItem->get();
+                return $this->memory[$hash];
+            }
         }
+
+        // Step 3: Get from activators and save to cache
+        $this->memory[$hash] = $this->activator->isActive($name, $context);
 
         // Write result to cache
-        $cacheItem->set($this->memory);
-        $cacheItem->expiresAfter($this->cachePoolTtl);
-        $this->cachePool->save($cacheItem);
+        if ($this->cachePool !== null && $cacheItem !== null) {
+            $cacheItem->set($this->memory[$hash]);
+            $cacheItem->expiresAfter($this->cacheTtl);
+            $this->cachePool->save($cacheItem);
+        }
 
         return $this->memory[$hash];
     }

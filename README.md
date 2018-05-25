@@ -201,7 +201,7 @@ class MyClass
         $activator = new ArrayActivator(['your_feature_name']);
 
         $manager = new FeatureManager($activator);
-        $manager->setCachePool($this->cachePool, 3600);
+        $manager->setCache($this->cachePool, 3600);
 
         // This will call your activator
         if ($manager->isActive('your_feature_name')) {
@@ -212,44 +212,6 @@ class MyClass
         if ($manager->isActive('your_feature_name')) {
             // do something
         }
-    }
-}
-```
-
-Using collector
----------------------------
-The `ResultCollectorInterface` collects all results, the context and activator name. This is useful if you need this
-for logging or profiling. 
-
-Just create an instance of a class which implement the interface and append it:
-
-```php
-// MyClass.php
-class MyClass
-{
-    public function doSomething()
-    {
-        $activator = new ArrayActivator(['your_feature_name']);
-
-        $manager = new FeatureManager($activator);
-        
-        $collector = new ArrayResultCollector;
-        $manager->setCollector($collector);
-
-        if ($manager->isActive('your_feature_name')) {
-            // do something
-        }
-        
-        if ($manager->isActive('your_feature_name_2')) {
-            // do something
-        }
-        
-        if ($manager->isActive('your_feature_name_3')) {
-            // do something
-        }
-        
-        // Get all collected results
-        $results = $collector->all();
     }
 }
 ```

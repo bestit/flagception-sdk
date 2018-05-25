@@ -3,7 +3,6 @@
 namespace Flagception\Activator;
 
 use Flagception\Model\Context;
-use Flagception\Model\Result;
 
 /**
  * Class ChainActivator
@@ -45,15 +44,12 @@ class ChainActivator implements FeatureActivatorInterface
      */
     public function isActive($name, Context $context)
     {
-        $activatorName = null;
         foreach ($this->bag as $activator) {
             if ($activator->isActive($name, $context) === true) {
-                $activatorName = $activator->getName();
-
-                break;
+                return true;
             }
         }
 
-        return new Result($name, $activatorName !== null, $context, $activatorName);
+        return false;
     }
 }
