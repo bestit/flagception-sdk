@@ -1,5 +1,6 @@
 ## Unreleased
 ### Added
+- Add optional cache for `FeatureManager` for caching feature results @migo315
 - Add new [CookieActivator](docs/activator/cookie.md) @migo315
 - Add getters for activator and decorator bag in chain classes @migo315
 
