@@ -1,6 +1,7 @@
 ## Unreleased
 ### Added
 - Add new [CookieActivator](docs/activator/cookie.md) @migo315
+- Add getters for activator and decorator bag in chain classes @migo315
 
 ## [1.1.0]
 ### Added
