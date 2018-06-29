@@ -32,6 +32,16 @@ class ChainActivator implements FeatureActivatorInterface
     }
 
     /**
+     * Get activators bag
+     *
+     * @return FeatureActivatorInterface[]
+     */
+    public function getActivators()
+    {
+        return $this->bag;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getName()

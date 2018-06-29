@@ -32,6 +32,16 @@ class ChainDecorator implements ContextDecoratorInterface
     }
 
     /**
+     * Get decorators bag
+     *
+     * @return ContextDecoratorInterface[]
+     */
+    public function getDecorators()
+    {
+        return $this->bag;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getName()

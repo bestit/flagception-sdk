@@ -77,4 +77,20 @@ class ChainDecoratorTest extends TestCase
             'flop' => 12
         ], $context->all());
     }
+
+    /**
+     * Test add and get decorators
+     *
+     * @return void
+     */
+    public function testAddAndGet()
+    {
+        $decorator = new ChainDecorator();
+        $decorator->add($fakeDecorator1 = new ArrayDecorator());
+        $decorator->add($fakeDecorator2 = new ArrayDecorator([]));
+
+        // Should be the same sorting
+        static::assertSame($fakeDecorator1, $decorator->getDecorators()[0]);
+        static::assertSame($fakeDecorator2, $decorator->getDecorators()[1]);
+    }
 }

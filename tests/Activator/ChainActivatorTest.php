@@ -2,6 +2,7 @@
 
 namespace Flagception\Tests\Activator;
 
+use Flagception\Activator\ArrayActivator;
 use Flagception\Activator\ChainActivator;
 use Flagception\Activator\FeatureActivatorInterface;
 use Flagception\Model\Context;
@@ -99,5 +100,21 @@ class ChainActivatorTest extends TestCase
             ->willReturn(true);
 
         static::assertTrue($activator->isActive('feature_abc', new Context()));
+    }
+
+    /**
+     * Test add and get activators
+     *
+     * @return void
+     */
+    public function testAddAndGet()
+    {
+        $decorator = new ChainActivator();
+        $decorator->add($fakeActivator1 = new ArrayActivator());
+        $decorator->add($fakeActivator2 = new ArrayActivator([]));
+
+        // Should be the same sorting
+        static::assertSame($fakeActivator1, $decorator->getActivators()[0]);
+        static::assertSame($fakeActivator2, $decorator->getActivators()[1]);
     }
 }
