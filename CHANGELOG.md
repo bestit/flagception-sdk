@@ -1,5 +1,9 @@
 ## Unreleased
 ### Added
+- \#1 \#4 Add new [CacheActivator](docs/activator/cache.md) @migo315
+
+## [1.2.0]
+### Added
 - Add new [CookieActivator](docs/activator/cookie.md) @migo315
 - Add getters for activator and decorator bag in chain classes @migo315
 

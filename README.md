@@ -80,6 +80,8 @@ and a [ChainActivator](docs/activator/chain.md).
 
 In most cases you will create your own activator (eg. for doctrine). Just implement the `FeatureActivatorInterface`.
 
+You can use a [CacheActivator](docs/activator/cache.md) if you want to cache the result from some time intensive activators.
+
 Advanced example
 ---------------------------
 Sometimes your activator needs more context for deciding if a feature is active or not. You can optionally add a context
