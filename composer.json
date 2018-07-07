@@ -32,6 +32,7 @@
     }
   },
   "suggest": {
-    "flagception/contentful-activator": "Fetch feature flags from contentful."
+    "flagception/contentful-activator": "Fetch feature flags from contentful.",
+    "flagception/database-activator": "Fetch feature flags from database."
   }
 }
