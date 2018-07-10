@@ -1,4 +1,4 @@
-## Unreleased
+## [1.3.0]
 ### Added
 - \#1 \#4 Add new [CacheActivator](docs/activator/cache.md) @migo315
 
