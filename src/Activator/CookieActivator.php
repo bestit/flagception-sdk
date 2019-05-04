@@ -2,6 +2,7 @@
 
 namespace Flagception\Activator;
 
+use Flagception\Exception\InvalidArgumentException;
 use Flagception\Model\Context;
 
 /**
@@ -13,7 +14,17 @@ use Flagception\Model\Context;
 class CookieActivator implements FeatureActivatorInterface
 {
     /**
-     * Allowed features
+     * Activator should act as whitelist
+     */
+    const WHITELIST = 'whitelist';
+
+    /**
+     * Activator should act as blacklist
+     */
+    const BLACKLIST = 'blacklist';
+
+    /**
+     * Features collection
      *
      * @var array
      */
@@ -34,17 +45,37 @@ class CookieActivator implements FeatureActivatorInterface
     private $separator;
 
     /**
+     * Mode (whitelist / blacklist)
+     *
+     * @var string
+     */
+    private $mode;
+
+    /**
      * CookieActivator constructor.
      *
      * @param array $features
      * @param string $name
      * @param string $separator
+     * @param string $mode
+     *
+     * @throws InvalidArgumentException
      */
-    public function __construct(array $features, $name = 'flagception', $separator = ',')
+    public function __construct(array $features, $name = 'flagception', $separator = ',', $mode = self::WHITELIST)
     {
+        if (!in_array($mode, [self::BLACKLIST, self::WHITELIST], true)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    'Invalid mode argument for cookie activator: "%s". Expected: "whitelist" or "blacklist"',
+                    $mode
+                )
+            );
+        }
+
         $this->features = $features;
         $this->name = $name;
         $this->separator = $separator;
+        $this->mode = $mode;
     }
 
     /**
@@ -60,14 +91,22 @@ class CookieActivator implements FeatureActivatorInterface
      */
     public function isActive($name, Context $context)
     {
-        if (!in_array($name, $this->features, true)) {
+        // Disable features which aren't whitelisted
+        if ($this->mode === self::WHITELIST && !in_array($name, $this->features, true)) {
             return false;
         }
 
+        // Disable features which are blacklisted
+        if ($this->mode === self::BLACKLIST && in_array($name, $this->features, true)) {
+            return false;
+        }
+
+        // Disable if non cookie exists
         if (!array_key_exists($this->name, $_COOKIE)) {
             return false;
         }
 
+        // Enable, if feature is set in cookie
         return in_array($name, array_map('trim', explode($this->separator, $_COOKIE[$this->name])), true);
     }
 }
