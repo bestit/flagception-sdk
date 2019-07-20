@@ -102,6 +102,41 @@ The CookieActivator acts as whitelist. You can change this behavior to a blackli
       }
   }
   ```
+  
+ ### Cookie extractor
+ We extract our cookie content via the global `$_COOKIE`. This should fit the most cases. But some frameworks have their own
+ implementation for cookies. You can pass a callable as fifth argument if you want to implement them.
+ 
+Here an example:
+
+   ```php
+   // MyClass.php
+   class MyClass
+   {
+       public function doSomething()
+       {
+           $myCookieHandler = new MyCookieHandler();
+       
+           $activator = new CookieActivator(
+               ['feature_wxy'],
+               'my_cookie_name', 
+               '|',
+               CookieActivator::WHITELIST,
+               function ($name) use ($myCookieHandler) {
+                    return $myCookieHandler->get($name);
+               }
+           );
+   
+           $manager = new FeatureManager($activator);
+           
+           if ($manager->isActive('feature_wxy')) {
+               // do something
+           }
+       }
+   }
+   ```
+ 
+ The callable can be an [invoke object](https://www.php.net/manual/en/language.oop5.magic.php#object.invoke) too.
  
  ### Beware!
  Cookies are not secure. You should only use this activator for internal stuff. Do not use this for critical or public parts
