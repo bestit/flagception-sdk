@@ -1,3 +1,7 @@
+## Unreleased
+### Added
+- \#19 Add cookie extractor for [CookieActivator](docs/activator/cookie.md) @migo315
+
 ## [1.4.0]
 ### Added
 - \#16 Add new blacklist mode for [CookieActivator](docs/activator/cookie.md) @migo315

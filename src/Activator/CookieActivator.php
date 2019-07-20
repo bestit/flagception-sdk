@@ -52,17 +52,30 @@ class CookieActivator implements FeatureActivatorInterface
     private $mode;
 
     /**
+     * The extractor
+     *
+     * @var callable
+     */
+    private $extractor;
+
+    /**
      * CookieActivator constructor.
      *
      * @param array $features
      * @param string $name
      * @param string $separator
      * @param string $mode
+     * @param callable|null $extractor
      *
      * @throws InvalidArgumentException
      */
-    public function __construct(array $features, $name = 'flagception', $separator = ',', $mode = self::WHITELIST)
-    {
+    public function __construct(
+        array $features,
+        $name = 'flagception',
+        $separator = ',',
+        $mode = self::WHITELIST,
+        callable $extractor = null
+    ) {
         if (!in_array($mode, [self::BLACKLIST, self::WHITELIST], true)) {
             throw new InvalidArgumentException(
                 sprintf(
@@ -76,6 +89,15 @@ class CookieActivator implements FeatureActivatorInterface
         $this->name = $name;
         $this->separator = $separator;
         $this->mode = $mode;
+
+        // Extractor callable
+        $this->extractor = $extractor ? $extractor : function ($name) {
+            if (!array_key_exists($name, $_COOKIE)) {
+                return null;
+            }
+
+            return $_COOKIE[$name];
+        };
     }
 
     /**
@@ -101,12 +123,11 @@ class CookieActivator implements FeatureActivatorInterface
             return false;
         }
 
-        // Disable if non cookie exists
-        if (!array_key_exists($this->name, $_COOKIE)) {
-            return false;
+        // Enable, if cooke exists and feature is set in cookie
+        if ($cookieData = call_user_func($this->extractor, $this->name, $name, $context)) {
+            return in_array($name, array_map('trim', explode($this->separator, $cookieData)), true);
         }
 
-        // Enable, if feature is set in cookie
-        return in_array($name, array_map('trim', explode($this->separator, $_COOKIE[$this->name])), true);
+        return false;
     }
 }

@@ -5,6 +5,7 @@ namespace Flagception\Tests\Activator;
 use Flagception\Activator\CookieActivator;
 use Flagception\Activator\FeatureActivatorInterface;
 use Flagception\Exception\InvalidArgumentException;
+use Flagception\Extractor\Cookie\CookieExtractorInterface;
 use Flagception\Model\Context;
 use PHPUnit\Framework\TestCase;
 
@@ -188,6 +189,30 @@ class CookieActivatorTest extends TestCase
         static::assertFalse($activator->isActive('feature_ghi', new Context()));
         static::assertTrue($activator->isActive('foobar', new Context()));
         static::assertFalse($activator->isActive('feature_xyz', new Context()));
+    }
+
+    /**
+     * Test own cookie extractor
+     *
+     * @return void
+     *
+     * @throws InvalidArgumentException
+     */
+    public function testOwnCookieExtractor()
+    {
+        $activator = new CookieActivator(
+            ['feature_abc', 'foobar'],
+            'flagception',
+            ',',
+            CookieActivator::WHITELIST,
+            function ($name) {
+                return 'feature_abc';
+            }
+        );
+
+        $_COOKIE['flagception'] = 'foobar';
+        static::assertTrue($activator->isActive('feature_abc', new Context()));
+        static::assertFalse($activator->isActive('foobar', new Context()));
     }
 
     /**
