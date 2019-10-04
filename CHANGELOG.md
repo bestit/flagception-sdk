@@ -1,6 +1,8 @@
 ## Unreleased
 ### Added
 - \#19 Add cookie extractor callable for [CookieActivator](docs/activator/cookie.md) @migo315
+- \#15 Support PHP7.3 in travics for tests @migo315
+- \#13 Add "match all" strategy for [ChainActivator](docs/activator/chain.md) @migo315
 
 ## [1.4.0]
 ### Added
