@@ -3,6 +3,8 @@ EnvironmentActivator
 The `EnvironmentActivator` will use environment variables for enable or disable a feature. In some cases your environment
 variable names does not match your feature names. So you can define a simple map (array) as first constructor argument.
 
+This activator use `$_ENV` first to get the environment value and `getenv()` as fallback.
+
 Simple example: You have a feature `foo_bar` but your environment variables looks like `FEATURE_FOO_BAR`. Your class should
 be something like this:
 

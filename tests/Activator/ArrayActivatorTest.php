@@ -76,4 +76,68 @@ class ArrayActivatorTest extends TestCase
 
         static::assertTrue($activator->isActive('feature_abc', new Context()));
     }
+
+    /**
+     * Test feature is in array (key => value)
+     *
+     * @return void
+     */
+    public function testIsInArrayKeyValue()
+    {
+        $activator = new ArrayActivator([
+            'feature_def',
+            'feature_abc' => true
+        ]);
+
+        static::assertTrue($activator->isActive('feature_abc', new Context()));
+    }
+
+    /**
+     * Test feature is in array but false
+     *
+     * @return void
+     */
+    public function testIsInArrayButFalse()
+    {
+        $activator = new ArrayActivator([
+            'feature_def',
+            'feature_abc' => false
+        ]);
+
+        static::assertFalse($activator->isActive('feature_abc', new Context()));
+    }
+
+    /**
+     * Test feature is in array / cast from integer
+     *
+     * @return void
+     */
+    public function testIsInArrayCastFromInteger()
+    {
+        $activator = new ArrayActivator([
+            'feature_def',
+            'feature_abc' => 1,
+            'feature_ghi' => 0
+        ]);
+
+        static::assertTrue($activator->isActive('feature_abc', new Context()));
+        static::assertFalse($activator->isActive('feature_ghi', new Context()));
+    }
+
+    /**
+     * Test feature is in array / cast from string
+     *
+     * @return void
+     */
+    public function testIsInArrayCastFromString()
+    {
+        $activator = new ArrayActivator([
+            'feature_def',
+            'feature_abc' => 'true',
+            'feature_ghi' => 'false',
+        ]);
+
+        static::assertTrue($activator->isActive('feature_abc', new Context()));
+        static::assertFalse($activator->isActive('feature_ghi', new Context()));
+    }
 }
