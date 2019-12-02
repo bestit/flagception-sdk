@@ -1,4 +1,4 @@
-## Unreleased
+## [1.5.0]
 ### Changed
 - The [EnvironmentActivator](docs/activator/environment.md) looks for values by `$_ENV` and `getenv()` @migo315
 - The [ArrayActivator](docs/activator/array.md) accept associative array in addition to numeric arrays @migo315
