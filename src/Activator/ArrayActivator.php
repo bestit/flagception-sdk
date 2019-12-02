@@ -13,20 +13,20 @@ use Flagception\Model\Context;
 class ArrayActivator implements FeatureActivatorInterface
 {
     /**
-     * Active features
+     * Array of features
      *
      * @var array
      */
-    private $activeFeatures;
+    private $features;
 
     /**
      * ArrayActivator constructor.
      *
-     * @param array $activeFeatures
+     * @param array $features
      */
-    public function __construct(array $activeFeatures = [])
+    public function __construct(array $features = [])
     {
-        $this->activeFeatures = $activeFeatures;
+        $this->features = $features;
     }
 
     /**
@@ -42,6 +42,10 @@ class ArrayActivator implements FeatureActivatorInterface
      */
     public function isActive($name, Context $context)
     {
-        return in_array($name, $this->activeFeatures, true);
+        if (array_key_exists($name, $this->features)) {
+            return filter_var($this->features[$name], FILTER_VALIDATE_BOOLEAN);
+        }
+
+        return in_array($name, $this->features, true);
     }
 }

@@ -44,9 +44,11 @@ class EnvironmentActivatorTest extends TestCase
     public function testUnmappedVariableWithoutForce()
     {
         putenv('FOOBAR_TEST_FLAGCEPTION=true');
+        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
 
         $activator = new EnvironmentActivator();
         static::assertFalse($activator->isActive('FOOBAR_TEST_FLAGCEPTION', new Context()));
+        static::assertFalse($activator->isActive('BAZZ_TEST_FLAGCEPTION', new Context()));
     }
 
     /**
@@ -57,9 +59,11 @@ class EnvironmentActivatorTest extends TestCase
     public function testUnmappedVariableWithForce()
     {
         putenv('FOOBAR_TEST_FLAGCEPTION=true');
+        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
 
         $activator = new EnvironmentActivator([], true);
         static::assertTrue($activator->isActive('FOOBAR_TEST_FLAGCEPTION', new Context()));
+        static::assertTrue($activator->isActive('BAZZ_TEST_FLAGCEPTION', new Context()));
     }
 
     /**
@@ -70,6 +74,7 @@ class EnvironmentActivatorTest extends TestCase
     public function testUnknownVariableWithForce()
     {
         putenv('FOOBAR_TEST_FLAGCEPTION=true');
+        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
 
         $activator = new EnvironmentActivator([], true);
         static::assertFalse($activator->isActive('FOOBAR_FEATURE', new Context()));
@@ -83,11 +88,14 @@ class EnvironmentActivatorTest extends TestCase
     public function testMappedVariableWithoutForce()
     {
         putenv('FOOBAR_TEST_FLAGCEPTION=true');
+        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
 
         $activator = new EnvironmentActivator([
-            'feature_test' => 'FOOBAR_TEST_FLAGCEPTION'
+            'feature_test' => 'FOOBAR_TEST_FLAGCEPTION',
+            'feature_bazz' => 'BAZZ_TEST_FLAGCEPTION'
         ]);
         static::assertTrue($activator->isActive('feature_test', new Context()));
+        static::assertTrue($activator->isActive('feature_bazz', new Context()));
     }
 
     /**
@@ -98,11 +106,14 @@ class EnvironmentActivatorTest extends TestCase
     public function testMappedVariableWithForce()
     {
         putenv('FOOBAR_TEST_FLAGCEPTION=true');
+        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
 
         $activator = new EnvironmentActivator([
-            'feature_test' => 'FOOBAR_TEST_FLAGCEPTION'
+            'feature_test' => 'FOOBAR_TEST_FLAGCEPTION',
+            'feature_bazz' => 'BAZZ_TEST_FLAGCEPTION'
         ], true);
         static::assertTrue($activator->isActive('feature_test', new Context()));
+        static::assertTrue($activator->isActive('feature_bazz', new Context()));
     }
 
     /**
@@ -113,9 +124,11 @@ class EnvironmentActivatorTest extends TestCase
     public function testWrongMappedVariable()
     {
         putenv('FOOBAR_TEST_FLAGCEPTION=true');
+        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
 
         $activator = new EnvironmentActivator([
-            'feature_test' => 'FOOBAR_TEST_FLAGCEPTION'
+            'feature_test' => 'FOOBAR_TEST_FLAGCEPTION',
+            'feature_bazz' => 'BAZZ_TEST_FLAGCEPTION'
         ]);
         static::assertFalse($activator->isActive('bazz_foo', new Context()));
     }
@@ -128,10 +141,13 @@ class EnvironmentActivatorTest extends TestCase
     public function testWrongEnvironmentMappedVariable()
     {
         putenv('FOOBAR_TEST_FLAGCEPTION=true');
+        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
 
         $activator = new EnvironmentActivator([
-            'feature_test' => 'FOOBAR_FAIL'
+            'feature_test' => 'FOOBAR_FAIL',
+            'feature_bazz' => 'BAZZ_FAIL'
         ]);
         static::assertFalse($activator->isActive('feature_test', new Context()));
+        static::assertFalse($activator->isActive('feature_bazz', new Context()));
     }
 }

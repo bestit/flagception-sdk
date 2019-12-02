@@ -1,6 +1,12 @@
 ## Unreleased
+### Changed
+- The [EnvironmentActivator](docs/activator/environment.md) looks for values by `$_ENV` and `getenv()` @migo315
+- The [ArrayActivator](docs/activator/array.md) accept associative array in addition to numeric arrays @migo315
+
 ### Added
 - \#19 Add cookie extractor callable for [CookieActivator](docs/activator/cookie.md) @migo315
+- \#15 Support PHP7.3 in travics for tests @migo315
+- \#13 Add "match all" strategy for [ChainActivator](docs/activator/chain.md) @migo315
 
 ## [1.4.0]
 ### Added
