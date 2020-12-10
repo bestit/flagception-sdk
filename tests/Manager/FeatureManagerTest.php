@@ -5,6 +5,7 @@ namespace Flagception\Tests\Listener;
 use Flagception\Activator\ArrayActivator;
 use Flagception\Activator\FeatureActivatorInterface;
 use Flagception\Decorator\ArrayDecorator;
+use Flagception\Decorator\ContextDecoratorInterface;
 use Flagception\Manager\FeatureManager;
 use Flagception\Manager\FeatureManagerInterface;
 use Flagception\Model\Context;
@@ -100,5 +101,41 @@ class FeatureManagerTest extends TestCase
         );
 
         static::assertTrue($manager->isActive('feature_foo'));
+    }
+
+    /**
+     * Test feature exists in context
+     *
+     * @return void
+     */
+    public function testFeatureExistsInContext()
+    {
+        $manager = new FeatureManager(
+            new ArrayActivator(['feature_foo']),
+            new AssertFeatureExistsContextDecorator('feature_foo')
+        );
+
+        static::assertTrue($manager->isActive('feature_foo'));
+    }
+}
+
+class AssertFeatureExistsContextDecorator implements ContextDecoratorInterface
+{
+    private $feature;
+
+    public function __construct($feature)
+    {
+        $this->feature = $feature;
+    }
+
+    public function getName() {
+        return 'foobar';
+    }
+
+    public function decorate(Context $context)
+    {
+        TestCase::assertTrue($context->has('_feature'));
+        TestCase::assertSame($this->feature, $context->get('_feature'));
+        return $context;
     }
 }

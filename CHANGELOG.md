@@ -1,3 +1,7 @@
+## [Unreleased]
+### Added
+- \#24 Add `_feature` key with feature name to `Context` instance @ajgarlag
+
 ## [1.5.0]
 ### Changed
 - The [EnvironmentActivator](docs/activator/environment.md) looks for values by `$_ENV` and `getenv()` @migo315

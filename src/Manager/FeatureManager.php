@@ -49,6 +49,8 @@ class FeatureManager implements FeatureManagerInterface
             $context = new Context();
         }
 
+        $context->replace('_feature', $name);
+
         if ($this->decorator !== null) {
             $context = $this->decorator->decorate($context);
         }
