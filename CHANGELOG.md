@@ -1,4 +1,4 @@
-## [Unreleased]
+## [1.6.0]
 ### Added
 - \#24 Add `_feature` key with feature name to `Context` instance @ajgarlag
 
