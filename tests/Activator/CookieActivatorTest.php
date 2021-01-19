@@ -18,17 +18,6 @@ use PHPUnit\Framework\TestCase;
 class CookieActivatorTest extends TestCase
 {
     /**
-     * Setup for each test
-     *
-     * @return void
-     */
-    protected function setUp()
-    {
-        // We have to unset for getting a clean $_COOKIE instance.
-        unset($_COOKIE);
-    }
-
-    /**
      * Test implement interface
      *
      * @return void
@@ -118,6 +107,8 @@ class CookieActivatorTest extends TestCase
      */
     public function testCookieNameChangeUnknown()
     {
+        // We have to unset for getting a clean $_COOKIE instance.
+        unset($_COOKIE);
         $activator = new CookieActivator([
             'feature_abc'
         ]);
