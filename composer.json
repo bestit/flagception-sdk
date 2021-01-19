@@ -17,7 +17,7 @@
   },
   "require-dev": {
     "phing/phing": "^2.15",
-    "phpunit/phpunit": "^5.5",
+    "phpunit/phpunit": "^5.5||^9",
     "squizlabs/php_codesniffer": "^2.8",
     "php-coveralls/php-coveralls": "^1.0"
   },
