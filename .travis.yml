@@ -19,7 +19,8 @@ cache:
 install: composer update --prefer-dist --no-interaction
 
 script:
-  - ./vendor/bin/phing build
+  - composer test
+  - composer analyze
 
 after_success:
   - travis_retry php vendor/bin/coveralls
