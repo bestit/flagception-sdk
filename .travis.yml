@@ -26,4 +26,4 @@ script:
   - composer analyze
 
 after_success:
-  - travis_retry php vendor/bin/coveralls
+  - travis_retry php vendor/bin/php-coveralls
