@@ -1,12 +1,16 @@
 language: php
 sudo: false
 
+env:
+  - XDEBUG_MODE=coverage
+
 php:
   - 5.6
   - 7.0
   - 7.1
   - 7.2
   - 7.3
+  - 8.0
 
 before_install:
   - composer self-update
@@ -18,7 +22,8 @@ cache:
 install: composer update --prefer-dist --no-interaction
 
 script:
-  - ./vendor/bin/phing build
+  - composer test
+  - composer analyze
 
 after_success:
-  - travis_retry php vendor/bin/coveralls
+  - travis_retry php vendor/bin/php-coveralls

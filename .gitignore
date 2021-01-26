@@ -2,3 +2,4 @@ vendor
 composer.lock
 build/logs/*
 !build/logs/.gitkeep
+build/.phpunit.result.cache
