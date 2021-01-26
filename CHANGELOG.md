@@ -1,3 +1,10 @@
+## [1.7.0]
+### Added
+- Add support for PHP8 @Schleuse
+
+### Removed
+- Removed Phing as dev dependency @Schleuse
+
 ## [1.6.0]
 ### Added
 - \#24 Add `_feature` key with feature name to `Context` instance @ajgarlag
