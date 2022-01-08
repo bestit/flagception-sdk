@@ -101,4 +101,14 @@ class Context implements Serializable
     {
         $this->storage = unserialize($serialized);
     }
+
+    public function __serialize(): array
+    {
+        return [$this->serialize()];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->unserialize($data[0]);
+    }
 }
