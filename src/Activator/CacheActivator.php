@@ -49,6 +49,13 @@ class CacheActivator implements FeatureActivatorInterface
     private $memory = [];
 
     /**
+     * Expiration time in seconds
+     *
+     * @var int
+     */
+    private int $expirationTime = 0;
+
+    /**
      * CacheActivator constructor.
      *
      * @param FeatureActivatorInterface $activator
@@ -88,7 +95,7 @@ class CacheActivator implements FeatureActivatorInterface
         $hash = static::CACHE_KEY . '#' . $this->getName() . '#' . md5($name . '-' . $context->serialize());
 
         // Step 1: Try get from memory cache
-        if (array_key_exists($hash, $this->memory)) {
+        if (array_key_exists($hash, $this->memory) && $this->expirationTime > time()) {
             return $this->memory[$hash];
         }
 
@@ -111,8 +118,15 @@ class CacheActivator implements FeatureActivatorInterface
             $cacheItem->set($this->memory[$hash]);
             $cacheItem->expiresAfter($this->cacheTtl);
             $this->cachePool->save($cacheItem);
+
+            $this->setExpirationTime($this->cacheTtl);
         }
 
         return $this->memory[$hash];
+    }
+
+    private function setExpirationTime(int $time): void
+    {
+        $this->expirationTime = time() + $time;
     }
 }
