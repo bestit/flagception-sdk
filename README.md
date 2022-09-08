@@ -1,13 +1,10 @@
 # FeatureTox
 FeatureTox is a simple and powerful feature toggle library. Only a few lines of configuration necessary - and still very flexible and expandable.
 
-[![Latest Stable Version](https://poser.pugx.org/FeatureTox/FeatureTox/v/stable)](https://packagist.org/packages/playox/FeatureTox)
-[![Coverage Status](https://coveralls.io/repos/github/bestit/FeatureTox-sdk/badge.svg?branch=master)](https://coveralls.io/github/bestit/FeatureTox-sdk?branch=master)
-[![Build Status](https://travis-ci.org/bestit/FeatureTox-sdk.svg?branch=master)](https://travis-ci.org/bestit/FeatureTox-sdk)
-[![Total Downloads](https://poser.pugx.org/FeatureTox/FeatureTox/downloads)](https://packagist.org/packages/FeatureTox/FeatureTox)
-[![License](https://poser.pugx.org/FeatureTox/FeatureTox/license)](https://packagist.org/packages/FeatureTox/FeatureTox)
-
-[![SensioLabsInsight](https://insight.sensiolabs.com/projects/4423478b-f6db-4f77-bb36-0782bcdf82c0/small.png)](https://insight.sensiolabs.com/projects/4423478b-f6db-4f77-bb36-0782bcdf82c0)
+[![Latest Stable Version](https://poser.pugx.org/playox/FeatureTox/v/stable)](https://packagist.org/packages/playox/FeatureTox)
+[![Testing FeatureTox](https://github.com/playox/feature-tox/actions/workflows/php.yml/badge.svg?branch=master)](https://github.com/playox/feature-tox/actions/workflows/php.yml)
+[![Total Downloads](https://poser.pugx.org/playox/FeatureTox/downloads)](https://packagist.org/packages/playox/FeatureTox)
+[![License](https://poser.pugx.org/playox/FeatureTox/license)](https://packagist.org/packages/playox/FeatureTox)
 
 Download the library
 ---------------------------
