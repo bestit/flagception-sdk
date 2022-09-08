@@ -1,16 +1,16 @@
 <?php
 
-namespace Flagception\Tests\Exception;
+namespace FeatureTox\Tests\Exception;
 
-use Flagception\Exception\InvalidArgumentException;
-use Flagception\Exception\FlagceptionException;
+use FeatureTox\Exception\InvalidArgumentException;
+use FeatureTox\Exception\FeatureToxException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class InvalidArgumentExceptionTest
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Tests\Exception
+ * @package FeatureTox\Tests\Exception
  */
 class InvalidArgumentExceptionTest extends TestCase
 {
@@ -21,6 +21,6 @@ class InvalidArgumentExceptionTest extends TestCase
      */
     public function testExtends()
     {
-        static::assertInstanceOf(FlagceptionException::class, new InvalidArgumentException());
+        static::assertInstanceOf(FeatureToxException::class, new InvalidArgumentException());
     }
 }

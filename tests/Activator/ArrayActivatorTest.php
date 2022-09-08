@@ -1,17 +1,17 @@
 <?php
 
-namespace Flagception\Tests\Activator;
+namespace FeatureTox\Tests\Activator;
 
-use Flagception\Activator\ArrayActivator;
-use Flagception\Activator\FeatureActivatorInterface;
-use Flagception\Model\Context;
+use FeatureTox\Activator\ArrayActivator;
+use FeatureTox\Activator\FeatureActivatorInterface;
+use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class ArrayActivatorTest
  *
  * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package Flagception\Tests\Activator
+ * @package FeatureTox\Tests\Activator
  */
 class ArrayActivatorTest extends TestCase
 {

@@ -1,15 +1,15 @@
 <?php
 
-namespace Flagception\Model;
+namespace FeatureTox\Model;
 
-use Flagception\Exception\AlreadyDefinedException;
+use FeatureTox\Exception\AlreadyDefinedException;
 use Serializable;
 
 /**
  * Class Context
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Model
+ * @package FeatureTox\Model
  */
 class Context implements Serializable
 {

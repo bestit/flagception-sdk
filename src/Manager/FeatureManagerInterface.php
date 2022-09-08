@@ -1,14 +1,14 @@
 <?php
 
-namespace Flagception\Manager;
+namespace FeatureTox\Manager;
 
-use Flagception\Model\Context;
+use FeatureTox\Model\Context;
 
 /**
  * Interface FeatureManagerInterface
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Manager
+ * @package FeatureTox\Manager
  */
 interface FeatureManagerInterface
 {

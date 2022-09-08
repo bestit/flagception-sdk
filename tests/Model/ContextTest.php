@@ -1,16 +1,16 @@
 <?php
 
-namespace Flagception\Tests\Model;
+namespace FeatureTox\Tests\Model;
 
-use Flagception\Exception\AlreadyDefinedException;
-use Flagception\Model\Context;
+use FeatureTox\Exception\AlreadyDefinedException;
+use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class ContextTest
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Tests\Model
+ * @package FeatureTox\Tests\Model
  */
 class ContextTest extends TestCase
 {

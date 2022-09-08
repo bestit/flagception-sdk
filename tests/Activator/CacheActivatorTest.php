@@ -1,12 +1,12 @@
 <?php
 
-namespace Flagception\Tests\Activator;
+namespace FeatureTox\Tests\Activator;
 
-use Flagception\Activator\ArrayActivator;
-use Flagception\Activator\CacheActivator;
-use Flagception\Activator\ChainActivator;
-use Flagception\Activator\FeatureActivatorInterface;
-use Flagception\Model\Context;
+use FeatureTox\Activator\ArrayActivator;
+use FeatureTox\Activator\CacheActivator;
+use FeatureTox\Activator\ChainActivator;
+use FeatureTox\Activator\FeatureActivatorInterface;
+use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
@@ -16,7 +16,7 @@ use Symfony\Component\Cache\Adapter\ArrayAdapter;
  * Tests the cache activator
  *
  * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package Flagception\Tests\Activator
+ * @package FeatureTox\Tests\Activator
  */
 class CacheActivatorTest extends TestCase
 {

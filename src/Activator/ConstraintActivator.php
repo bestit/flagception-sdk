@@ -1,15 +1,15 @@
 <?php
 
-namespace Flagception\Activator;
+namespace FeatureTox\Activator;
 
-use Flagception\Constraint\ConstraintResolverInterface;
-use Flagception\Model\Context;
+use FeatureTox\Constraint\ConstraintResolverInterface;
+use FeatureTox\Model\Context;
 
 /**
  * Class ConstraintActivator
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Activator
+ * @package FeatureTox\Activator
  */
 class ConstraintActivator implements FeatureActivatorInterface
 {

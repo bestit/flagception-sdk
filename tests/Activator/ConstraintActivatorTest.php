@@ -1,11 +1,11 @@
 <?php
 
-namespace Flagception\Tests\Activator;
+namespace FeatureTox\Tests\Activator;
 
-use Flagception\Activator\ConstraintActivator;
-use Flagception\Activator\FeatureActivatorInterface;
-use Flagception\Constraint\ConstraintResolver;
-use Flagception\Model\Context;
+use FeatureTox\Activator\ConstraintActivator;
+use FeatureTox\Activator\FeatureActivatorInterface;
+use FeatureTox\Constraint\ConstraintResolver;
+use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
@@ -13,7 +13,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
  * Class ConstraintActivatorTest
  *
  * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package Flagception\Tests\Activator
+ * @package FeatureTox\Tests\Activator
  */
 class ConstraintActivatorTest extends TestCase
 {

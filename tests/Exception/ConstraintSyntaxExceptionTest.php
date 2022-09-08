@@ -1,16 +1,16 @@
 <?php
 
-namespace Flagception\Tests\Exception;
+namespace FeatureTox\Tests\Exception;
 
-use Flagception\Exception\ConstraintSyntaxException;
-use Flagception\Exception\FlagceptionException;
+use FeatureTox\Exception\ConstraintSyntaxException;
+use FeatureTox\Exception\FeatureToxException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class ConstraintSyntaxExceptionTest
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Tests\Exception
+ * @package FeatureTox\Tests\Exception
  */
 class ConstraintSyntaxExceptionTest extends TestCase
 {
@@ -21,6 +21,6 @@ class ConstraintSyntaxExceptionTest extends TestCase
      */
     public function testExtends()
     {
-        static::assertInstanceOf(FlagceptionException::class, new ConstraintSyntaxException());
+        static::assertInstanceOf(FeatureToxException::class, new ConstraintSyntaxException());
     }
 }

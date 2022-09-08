@@ -2,12 +2,14 @@
 
 namespace FeatureTox\Exception;
 
+use Exception;
+
 /**
- * Class AlreadyDefinedException
+ * Class FeatureToxException
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
  * @package FeatureTox\Exception
  */
-class AlreadyDefinedException extends FeatureToxException
+class FeatureToxException extends Exception
 {
 }

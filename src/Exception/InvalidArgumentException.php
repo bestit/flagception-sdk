@@ -1,13 +1,13 @@
 <?php
 
-namespace Flagception\Exception;
+namespace FeatureTox\Exception;
 
 /**
  * Class InvalidArgumentException
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Exception
+ * @package FeatureTox\Exception
  */
-class InvalidArgumentException extends FlagceptionException
+class InvalidArgumentException extends FeatureToxException
 {
 }

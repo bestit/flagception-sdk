@@ -1,21 +1,21 @@
 <?php
 
-namespace Flagception\Tests\Listener;
+namespace FeatureTox\Tests\Listener;
 
-use Flagception\Activator\ArrayActivator;
-use Flagception\Activator\FeatureActivatorInterface;
-use Flagception\Decorator\ArrayDecorator;
-use Flagception\Decorator\ContextDecoratorInterface;
-use Flagception\Manager\FeatureManager;
-use Flagception\Manager\FeatureManagerInterface;
-use Flagception\Model\Context;
+use FeatureTox\Activator\ArrayActivator;
+use FeatureTox\Activator\FeatureActivatorInterface;
+use FeatureTox\Decorator\ArrayDecorator;
+use FeatureTox\Decorator\ContextDecoratorInterface;
+use FeatureTox\Manager\FeatureManager;
+use FeatureTox\Manager\FeatureManagerInterface;
+use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class FeatureManagerTest
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Tests\Listener
+ * @package FeatureTox\Tests\Listener
  */
 class FeatureManagerTest extends TestCase
 {

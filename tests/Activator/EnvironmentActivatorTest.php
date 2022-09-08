@@ -1,17 +1,17 @@
 <?php
 
-namespace Flagception\Tests\Activator;
+namespace FeatureTox\Tests\Activator;
 
-use Flagception\Activator\EnvironmentActivator;
-use Flagception\Activator\FeatureActivatorInterface;
-use Flagception\Model\Context;
+use FeatureTox\Activator\EnvironmentActivator;
+use FeatureTox\Activator\FeatureActivatorInterface;
+use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class EnvironmentActivatorTest
  *
  * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package Flagception\Tests\Activator
+ * @package FeatureTox\Tests\Activator
  */
 class EnvironmentActivatorTest extends TestCase
 {
@@ -43,12 +43,12 @@ class EnvironmentActivatorTest extends TestCase
      */
     public function testUnmappedVariableWithoutForce()
     {
-        putenv('FOOBAR_TEST_FLAGCEPTION=true');
-        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
+        putenv('FOOBAR_TEST_FeatureTox=true');
+        $_ENV['BAZZ_TEST_FeatureTox'] = true;
 
         $activator = new EnvironmentActivator();
-        static::assertFalse($activator->isActive('FOOBAR_TEST_FLAGCEPTION', new Context()));
-        static::assertFalse($activator->isActive('BAZZ_TEST_FLAGCEPTION', new Context()));
+        static::assertFalse($activator->isActive('FOOBAR_TEST_FeatureTox', new Context()));
+        static::assertFalse($activator->isActive('BAZZ_TEST_FeatureTox', new Context()));
     }
 
     /**
@@ -58,12 +58,12 @@ class EnvironmentActivatorTest extends TestCase
      */
     public function testUnmappedVariableWithForce()
     {
-        putenv('FOOBAR_TEST_FLAGCEPTION=true');
-        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
+        putenv('FOOBAR_TEST_FeatureTox=true');
+        $_ENV['BAZZ_TEST_FeatureTox'] = true;
 
         $activator = new EnvironmentActivator([], true);
-        static::assertTrue($activator->isActive('FOOBAR_TEST_FLAGCEPTION', new Context()));
-        static::assertTrue($activator->isActive('BAZZ_TEST_FLAGCEPTION', new Context()));
+        static::assertTrue($activator->isActive('FOOBAR_TEST_FeatureTox', new Context()));
+        static::assertTrue($activator->isActive('BAZZ_TEST_FeatureTox', new Context()));
     }
 
     /**
@@ -73,8 +73,8 @@ class EnvironmentActivatorTest extends TestCase
      */
     public function testUnknownVariableWithForce()
     {
-        putenv('FOOBAR_TEST_FLAGCEPTION=true');
-        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
+        putenv('FOOBAR_TEST_FeatureTox=true');
+        $_ENV['BAZZ_TEST_FeatureTox'] = true;
 
         $activator = new EnvironmentActivator([], true);
         static::assertFalse($activator->isActive('FOOBAR_FEATURE', new Context()));
@@ -87,12 +87,12 @@ class EnvironmentActivatorTest extends TestCase
      */
     public function testMappedVariableWithoutForce()
     {
-        putenv('FOOBAR_TEST_FLAGCEPTION=true');
-        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
+        putenv('FOOBAR_TEST_FeatureTox=true');
+        $_ENV['BAZZ_TEST_FeatureTox'] = true;
 
         $activator = new EnvironmentActivator([
-            'feature_test' => 'FOOBAR_TEST_FLAGCEPTION',
-            'feature_bazz' => 'BAZZ_TEST_FLAGCEPTION'
+            'feature_test' => 'FOOBAR_TEST_FeatureTox',
+            'feature_bazz' => 'BAZZ_TEST_FeatureTox'
         ]);
         static::assertTrue($activator->isActive('feature_test', new Context()));
         static::assertTrue($activator->isActive('feature_bazz', new Context()));
@@ -105,12 +105,12 @@ class EnvironmentActivatorTest extends TestCase
      */
     public function testMappedVariableWithForce()
     {
-        putenv('FOOBAR_TEST_FLAGCEPTION=true');
-        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
+        putenv('FOOBAR_TEST_FeatureTox=true');
+        $_ENV['BAZZ_TEST_FeatureTox'] = true;
 
         $activator = new EnvironmentActivator([
-            'feature_test' => 'FOOBAR_TEST_FLAGCEPTION',
-            'feature_bazz' => 'BAZZ_TEST_FLAGCEPTION'
+            'feature_test' => 'FOOBAR_TEST_FeatureTox',
+            'feature_bazz' => 'BAZZ_TEST_FeatureTox'
         ], true);
         static::assertTrue($activator->isActive('feature_test', new Context()));
         static::assertTrue($activator->isActive('feature_bazz', new Context()));
@@ -123,12 +123,12 @@ class EnvironmentActivatorTest extends TestCase
      */
     public function testWrongMappedVariable()
     {
-        putenv('FOOBAR_TEST_FLAGCEPTION=true');
-        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
+        putenv('FOOBAR_TEST_FeatureTox=true');
+        $_ENV['BAZZ_TEST_FeatureTox'] = true;
 
         $activator = new EnvironmentActivator([
-            'feature_test' => 'FOOBAR_TEST_FLAGCEPTION',
-            'feature_bazz' => 'BAZZ_TEST_FLAGCEPTION'
+            'feature_test' => 'FOOBAR_TEST_FeatureTox',
+            'feature_bazz' => 'BAZZ_TEST_FeatureTox'
         ]);
         static::assertFalse($activator->isActive('bazz_foo', new Context()));
     }
@@ -140,8 +140,8 @@ class EnvironmentActivatorTest extends TestCase
      */
     public function testWrongEnvironmentMappedVariable()
     {
-        putenv('FOOBAR_TEST_FLAGCEPTION=true');
-        $_ENV['BAZZ_TEST_FLAGCEPTION'] = true;
+        putenv('FOOBAR_TEST_FeatureTox=true');
+        $_ENV['BAZZ_TEST_FeatureTox'] = true;
 
         $activator = new EnvironmentActivator([
             'feature_test' => 'FOOBAR_FAIL',

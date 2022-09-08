@@ -1,8 +1,8 @@
 <?php
 
-namespace Flagception\Tests\Constraint\Provider;
+namespace FeatureTox\Tests\Constraint\Provider;
 
-use Flagception\Constraint\Provider\RatioProvider;
+use FeatureTox\Constraint\Provider\RatioProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
@@ -11,7 +11,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
  * Class RatioProviderTest
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Tests\Constraint\Provider
+ * @package FeatureTox\Tests\Constraint\Provider
  */
 class RatioProviderTest extends TestCase
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace Flagception\Tests\Constraint;
+namespace FeatureTox\Tests\Constraint;
 
-use Flagception\Constraint\ConstraintResolver;
-use Flagception\Constraint\ConstraintResolverInterface;
-use Flagception\Exception\ConstraintSyntaxException;
-use Flagception\Model\Context;
+use FeatureTox\Constraint\ConstraintResolver;
+use FeatureTox\Constraint\ConstraintResolverInterface;
+use FeatureTox\Exception\ConstraintSyntaxException;
+use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
@@ -13,7 +13,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
  * Class ConstraintResolverTest
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Tests\Constraint
+ * @package FeatureTox\Tests\Constraint
  */
 class ConstraintResolverTest extends TestCase
 {

@@ -1,18 +1,18 @@
 <?php
 
-namespace Flagception\Tests\Activator;
+namespace FeatureTox\Tests\Activator;
 
-use Flagception\Decorator\ArrayDecorator;
-use Flagception\Decorator\ChainDecorator;
-use Flagception\Decorator\ContextDecoratorInterface;
-use Flagception\Model\Context;
+use FeatureTox\Decorator\ArrayDecorator;
+use FeatureTox\Decorator\ChainDecorator;
+use FeatureTox\Decorator\ContextDecoratorInterface;
+use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class ChainDecoratorTest
  *
  * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package Flagception\Tests\Activator
+ * @package FeatureTox\Tests\Activator
  */
 class ChainDecoratorTest extends TestCase
 {

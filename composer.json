@@ -1,17 +1,20 @@
 {
-  "name": "flagception/flagception",
+  "name": "playox/feature-tox",
   "type": "lib",
   "description": "Feature toggle on steroids.",
-  "keywords": ["feature", "feature-toggle", "feature-flags", "flags", "flagception", "rollout", "testing", "toggle"],
+  "keywords": ["feature", "feature-toggle", "feature-flags", "flags", "FeatureTox", "rollout", "testing", "toggle"],
   "license": "MIT",
   "authors": [
     {
       "name": "Michel Chowanski",
-      "email": "michel.chowanski@bestit-online.de"
+      "email": "michel.chowanski@office-partner.de"
+    },{
+      "name": "Thomas Eiling",
+      "email": "github@eiling.org"
     }
   ],
   "require": {
-    "php": "^5.6||^7.0||^8.0",
+    "php": "^7.0||^8.0",
     "symfony/expression-language": ">=2.7",
     "psr/cache": "^1.0||^2.0||^3.0"
   },
@@ -22,17 +25,13 @@
   },
   "autoload": {
     "psr-4": {
-      "Flagception\\": "src"
+      "FeatureTox\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "Flagception\\Tests\\": "tests"
+      "FeatureTox\\Tests\\": "tests"
     }
-  },
-  "suggest": {
-    "flagception/contentful-activator": "Fetch feature flags from contentful.",
-    "flagception/database-activator": "Fetch feature flags from database."
   },
   "scripts": {
     "phpunit": "phpunit --coverage-text -c ./build/phpunit.xml",

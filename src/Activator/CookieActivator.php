@@ -1,15 +1,15 @@
 <?php
 
-namespace Flagception\Activator;
+namespace FeatureTox\Activator;
 
-use Flagception\Exception\InvalidArgumentException;
-use Flagception\Model\Context;
+use FeatureTox\Exception\InvalidArgumentException;
+use FeatureTox\Model\Context;
 
 /**
  * Activator for fetching feature states by cookie
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Activator
+ * @package FeatureTox\Activator
  */
 class CookieActivator implements FeatureActivatorInterface
 {
@@ -71,7 +71,7 @@ class CookieActivator implements FeatureActivatorInterface
      */
     public function __construct(
         array $features,
-        $name = 'flagception',
+        $name = 'FeatureTox',
         $separator = ',',
         $mode = self::WHITELIST,
         callable $extractor = null

@@ -19,7 +19,7 @@ class MyClass
 
         $manager = new FeatureManager($activator);
 
-        // Will return true, if you have set a cookie called "flagception" with value "feature_abc")
+        // Will return true, if you have set a cookie called "FeatureTox" with value "feature_abc")
         if ($manager->isActive('feature_abc')) {
             // do something
         }
@@ -32,7 +32,7 @@ class MyClass
 }
 ```
 
-As default, the cookie must called "flagception" but you can (and should!) set a custom cookie name as second argument.
+As default, the cookie must called "FeatureTox" but you can (and should!) set a custom cookie name as second argument.
 You can activate several features if you join the features names with a separator (third argument).
 
 Example:

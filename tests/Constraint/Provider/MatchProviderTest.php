@@ -1,8 +1,8 @@
 <?php
 
-namespace Flagception\Tests\Constraint\Provider;
+namespace FeatureTox\Tests\Constraint\Provider;
 
-use Flagception\Constraint\Provider\MatchProvider;
+use FeatureTox\Constraint\Provider\MatchProvider;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
@@ -11,7 +11,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
  * Class MatchProviderTest
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Tests\Constraint\Provider
+ * @package FeatureTox\Tests\Constraint\Provider
  */
 class MatchProviderTest extends TestCase
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace Flagception\Decorator;
+namespace FeatureTox\Decorator;
 
-use Flagception\Model\Context;
+use FeatureTox\Model\Context;
 
 /**
  * Interface ContextDecoratorInterface
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Decorator
+ * @package FeatureTox\Decorator
  */
 interface ContextDecoratorInterface
 {

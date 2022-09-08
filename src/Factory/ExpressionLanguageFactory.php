@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagception\Factory;
+namespace FeatureTox\Factory;
 
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
@@ -9,7 +9,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
  * Class ExpressionLanguageFactory
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Factory
+ * @package FeatureTox\Factory
  */
 class ExpressionLanguageFactory
 {

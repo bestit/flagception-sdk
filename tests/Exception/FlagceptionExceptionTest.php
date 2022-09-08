@@ -1,18 +1,18 @@
 <?php
 
-namespace Flagception\Tests\Exception;
+namespace FeatureTox\Tests\Exception;
 
 use Exception;
-use Flagception\Exception\FlagceptionException;
+use FeatureTox\Exception\FeatureToxException;
 use PHPUnit\Framework\TestCase;
 
 /**
- * Class FlagceptionExceptionTest
+ * Class FeatureToxExceptionTest
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Tests\Exception
+ * @package FeatureTox\Tests\Exception
  */
-class FlagceptionExceptionTest extends TestCase
+class FeatureToxExceptionTest extends TestCase
 {
     /**
      * Test extends from base exception
@@ -21,6 +21,6 @@ class FlagceptionExceptionTest extends TestCase
      */
     public function testExtends()
     {
-        static::assertInstanceOf(Exception::class, new FlagceptionException());
+        static::assertInstanceOf(Exception::class, new FeatureToxException());
     }
 }

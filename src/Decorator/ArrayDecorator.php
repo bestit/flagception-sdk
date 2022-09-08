@@ -1,14 +1,14 @@
 <?php
 
-namespace Flagception\Decorator;
+namespace FeatureTox\Decorator;
 
-use Flagception\Model\Context;
+use FeatureTox\Model\Context;
 
 /**
  * Class ArrayDecorator
  *
  * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package Flagception\Decorator
+ * @package FeatureTox\Decorator
  */
 class ArrayDecorator implements ContextDecoratorInterface
 {

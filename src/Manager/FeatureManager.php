@@ -1,16 +1,16 @@
 <?php
 
-namespace Flagception\Manager;
+namespace FeatureTox\Manager;
 
-use Flagception\Activator\FeatureActivatorInterface;
-use Flagception\Decorator\ContextDecoratorInterface;
-use Flagception\Model\Context;
+use FeatureTox\Activator\FeatureActivatorInterface;
+use FeatureTox\Decorator\ContextDecoratorInterface;
+use FeatureTox\Model\Context;
 
 /**
  * Class FeatureManager
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Manager
+ * @package FeatureTox\Manager
  */
 class FeatureManager implements FeatureManagerInterface
 {

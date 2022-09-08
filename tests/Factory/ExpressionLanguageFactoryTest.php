@@ -1,9 +1,9 @@
 <?php
 
-namespace Flagception\Tests\Factory;
+namespace FeatureTox\Tests\Factory;
 
-use Flagception\Constraint\Provider\DateProvider;
-use Flagception\Factory\ExpressionLanguageFactory;
+use FeatureTox\Constraint\Provider\DateProvider;
+use FeatureTox\Factory\ExpressionLanguageFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
@@ -11,7 +11,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
  * Class ExpressionLanguageFactoryTest
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Tests\Factory
+ * @package FeatureTox\Tests\Factory
  */
 class ExpressionLanguageFactoryTest extends TestCase
 {

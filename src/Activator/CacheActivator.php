@@ -1,23 +1,23 @@
 <?php
 
-namespace Flagception\Activator;
+namespace FeatureTox\Activator;
 
 use DateInterval;
-use Flagception\Model\Context;
+use FeatureTox\Model\Context;
 use Psr\Cache\CacheItemPoolInterface as CachePool;
 
 /**
  * Generic cache for activator
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Activator
+ * @package FeatureTox\Activator
  */
 class CacheActivator implements FeatureActivatorInterface
 {
     /**
      * Cache key
      */
-    const CACHE_KEY = 'flagception';
+    const CACHE_KEY = 'FeatureTox';
 
     /**
      * The origin activator

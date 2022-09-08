@@ -1,19 +1,19 @@
 <?php
 
-namespace Flagception\Tests\Activator;
+namespace FeatureTox\Tests\Activator;
 
-use Flagception\Activator\CookieActivator;
-use Flagception\Activator\FeatureActivatorInterface;
-use Flagception\Exception\InvalidArgumentException;
-use Flagception\Extractor\Cookie\CookieExtractorInterface;
-use Flagception\Model\Context;
+use FeatureTox\Activator\CookieActivator;
+use FeatureTox\Activator\FeatureActivatorInterface;
+use FeatureTox\Exception\InvalidArgumentException;
+use FeatureTox\Extractor\Cookie\CookieExtractorInterface;
+use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Tests the cookie activator
  *
  * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package Flagception\Tests\Activator
+ * @package FeatureTox\Tests\Activator
  */
 class CookieActivatorTest extends TestCase
 {
@@ -53,7 +53,7 @@ class CookieActivatorTest extends TestCase
     {
        $activator = new CookieActivator([]);
 
-       $_COOKIE['flagception'] = 'feature_abc';
+       $_COOKIE['FeatureTox'] = 'feature_abc';
        static::assertFalse($activator->isActive('feature_abc', new Context()));
     }
 
@@ -70,7 +70,7 @@ class CookieActivatorTest extends TestCase
             'feature_abc'
         ]);
 
-        $_COOKIE['flagception'] = 'feature_abc';
+        $_COOKIE['FeatureTox'] = 'feature_abc';
         static::assertTrue($activator->isActive('feature_abc', new Context()));
     }
 
@@ -90,7 +90,7 @@ class CookieActivatorTest extends TestCase
             'feature_xyz'
         ]);
 
-        $_COOKIE['flagception'] = 'feature_abc,feature_def, feature_ghi, foobar';
+        $_COOKIE['FeatureTox'] = 'feature_abc,feature_def, feature_ghi, foobar';
         static::assertTrue($activator->isActive('feature_abc', new Context()));
         static::assertTrue($activator->isActive('feature_def', new Context()));
         static::assertTrue($activator->isActive('feature_ghi', new Context()));
@@ -148,9 +148,9 @@ class CookieActivatorTest extends TestCase
             'feature_def',
             'feature_ghi',
             'feature_xyz'
-        ], 'flagception', '|');
+        ], 'FeatureTox', '|');
 
-        $_COOKIE['flagception'] = 'feature_abc |feature_def| feature_ghi|foobar';
+        $_COOKIE['FeatureTox'] = 'feature_abc |feature_def| feature_ghi|foobar';
         static::assertTrue($activator->isActive('feature_abc', new Context()));
         static::assertTrue($activator->isActive('feature_def', new Context()));
         static::assertTrue($activator->isActive('feature_ghi', new Context()));
@@ -172,9 +172,9 @@ class CookieActivatorTest extends TestCase
             'feature_def',
             'feature_ghi',
             'feature_xyz'
-        ], 'flagception', ',', CookieActivator::BLACKLIST);
+        ], 'FeatureTox', ',', CookieActivator::BLACKLIST);
 
-        $_COOKIE['flagception'] = 'feature_abc,feature_def, feature_ghi, foobar';
+        $_COOKIE['FeatureTox'] = 'feature_abc,feature_def, feature_ghi, foobar';
         static::assertFalse($activator->isActive('feature_abc', new Context()));
         static::assertFalse($activator->isActive('feature_def', new Context()));
         static::assertFalse($activator->isActive('feature_ghi', new Context()));
@@ -193,7 +193,7 @@ class CookieActivatorTest extends TestCase
     {
         $activator = new CookieActivator(
             ['feature_abc', 'foobar'],
-            'flagception',
+            'FeatureTox',
             ',',
             CookieActivator::WHITELIST,
             function ($name) {
@@ -201,7 +201,7 @@ class CookieActivatorTest extends TestCase
             }
         );
 
-        $_COOKIE['flagception'] = 'foobar';
+        $_COOKIE['FeatureTox'] = 'foobar';
         static::assertTrue($activator->isActive('feature_abc', new Context()));
         static::assertFalse($activator->isActive('foobar', new Context()));
     }
@@ -226,7 +226,7 @@ class CookieActivatorTest extends TestCase
      */
     public function testWhitelistModeArgument()
     {
-        $activator = new CookieActivator([], 'flagception', ',', 'whitelist');
+        $activator = new CookieActivator([], 'FeatureTox', ',', 'whitelist');
         static::assertEquals('cookie', $activator->getName());
     }
 
@@ -239,7 +239,7 @@ class CookieActivatorTest extends TestCase
      */
     public function testBlacklistModeArgument()
     {
-        $activator = new CookieActivator([], 'flagception', ',', 'blacklist');
+        $activator = new CookieActivator([], 'FeatureTox', ',', 'blacklist');
         static::assertEquals('cookie', $activator->getName());
     }
 
@@ -254,6 +254,6 @@ class CookieActivatorTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        new CookieActivator([], 'flagception', ',', 'foobar');
+        new CookieActivator([], 'FeatureTox', ',', 'foobar');
     }
 }

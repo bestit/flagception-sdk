@@ -1,6 +1,6 @@
 <?php
 
-namespace Flagception\Constraint\Provider;
+namespace FeatureTox\Constraint\Provider;
 
 use Symfony\Component\ExpressionLanguage\ExpressionFunction;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
@@ -9,7 +9,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
  * Class MatchProvider
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Constraint\Provider
+ * @package FeatureTox\Constraint\Provider
  */
 class MatchProvider implements ExpressionFunctionProviderInterface
 {

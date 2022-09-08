@@ -1,9 +1,9 @@
 <?php
 
-namespace Flagception\Constraint;
+namespace FeatureTox\Constraint;
 
-use Flagception\Exception\ConstraintSyntaxException;
-use Flagception\Model\Context;
+use FeatureTox\Exception\ConstraintSyntaxException;
+use FeatureTox\Model\Context;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Symfony\Component\ExpressionLanguage\SyntaxError;
 
@@ -11,7 +11,7 @@ use Symfony\Component\ExpressionLanguage\SyntaxError;
  * Class ConstraintResolver
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Constraint
+ * @package FeatureTox\Constraint
  */
 class ConstraintResolver implements ConstraintResolverInterface
 {

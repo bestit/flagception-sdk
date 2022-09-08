@@ -1,13 +1,13 @@
 <?php
 
-namespace Flagception\Exception;
+namespace FeatureTox\Exception;
 
 /**
  * Class ConstraintSyntaxException
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Exception
+ * @package FeatureTox\Exception
  */
-class ConstraintSyntaxException extends FlagceptionException
+class ConstraintSyntaxException extends FeatureToxException
 {
 }

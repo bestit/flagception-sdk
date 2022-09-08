@@ -1,14 +1,14 @@
 <?php
 
-namespace Flagception\Activator;
+namespace FeatureTox\Activator;
 
-use Flagception\Model\Context;
+use FeatureTox\Model\Context;
 
 /**
  * Interface FeatureActivatorInterface
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Activator
+ * @package FeatureTox\Activator
  */
 interface FeatureActivatorInterface
 {

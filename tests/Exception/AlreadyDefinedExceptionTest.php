@@ -1,16 +1,16 @@
 <?php
 
-namespace Flagception\Tests\Exception;
+namespace FeatureTox\Tests\Exception;
 
-use Flagception\Exception\AlreadyDefinedException;
-use Flagception\Exception\FlagceptionException;
+use FeatureTox\Exception\AlreadyDefinedException;
+use FeatureTox\Exception\FeatureToxException;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Class AlreadyDefinedExceptionTest
  *
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package Flagception\Tests\Exception
+ * @package FeatureTox\Tests\Exception
  */
 class AlreadyDefinedExceptionTest extends TestCase
 {
@@ -21,6 +21,6 @@ class AlreadyDefinedExceptionTest extends TestCase
      */
     public function testExtends()
     {
-        static::assertInstanceOf(FlagceptionException::class, new AlreadyDefinedException());
+        static::assertInstanceOf(FeatureToxException::class, new AlreadyDefinedException());
     }
 }
