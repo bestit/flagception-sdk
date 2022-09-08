@@ -4,12 +4,6 @@ namespace FeatureTox\Decorator;
 
 use FeatureTox\Model\Context;
 
-/**
- * Class ChainDecorator
- *
- * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package FeatureTox\Decorator
- */
 class ChainDecorator implements ContextDecoratorInterface
 {
     /**
@@ -17,42 +11,27 @@ class ChainDecorator implements ContextDecoratorInterface
      *
      * @var ContextDecoratorInterface[]
      */
-    private $bag = [];
+    private array $bag = [];
 
-    /**
-     * Add context decorator
-     *
-     * @param ContextDecoratorInterface $decorator
-     *
-     * @return void
-     */
-    public function add(ContextDecoratorInterface $decorator)
+    public function add(ContextDecoratorInterface $decorator): void
     {
         $this->bag[] = $decorator;
     }
 
     /**
-     * Get decorators bag
-     *
      * @return ContextDecoratorInterface[]
      */
-    public function getDecorators()
+    public function getDecorators(): array
     {
         return $this->bag;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'chain';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function decorate(Context $context)
+    public function decorate(Context $context): Context
     {
         foreach ($this->bag as $decorator) {
             $context = $decorator->decorate($context);

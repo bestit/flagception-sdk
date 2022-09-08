@@ -9,12 +9,6 @@ use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-/**
- * Class ConstraintActivatorTest
- *
- * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Activator
- */
 class ConstraintActivatorTest extends TestCase
 {
     /**

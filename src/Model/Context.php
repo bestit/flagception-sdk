@@ -5,20 +5,9 @@ namespace FeatureTox\Model;
 use FeatureTox\Exception\AlreadyDefinedException;
 use Serializable;
 
-/**
- * Class Context
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Model
- */
 class Context implements Serializable
 {
-    /**
-     * Storage for all context values
-     *
-     * @var array
-     */
-    private $storage = [];
+    private array $storage = [];
 
     /**
      * Add a context value. The key must be unique and cannot be replaced
@@ -29,7 +18,7 @@ class Context implements Serializable
      * @return void
      * @throws AlreadyDefinedException
      */
-    public function add($name, $value)
+    public function add(string $name, $value): void
     {
         if (array_key_exists($name, $this->storage)) {
             throw new AlreadyDefinedException(sprintf('Context value with key `%s` already defined', $name));
@@ -46,7 +35,7 @@ class Context implements Serializable
      *
      * @return void
      */
-    public function replace($name, $value)
+    public function replace(string $name, $value): void
     {
         $this->storage[$name] = $value;
     }
@@ -59,7 +48,7 @@ class Context implements Serializable
      *
      * @return mixed
      */
-    public function get($name, $default = null)
+    public function get(string $name, $default = null)
     {
         return array_key_exists($name, $this->storage) ? $this->storage[$name] : $default;
     }
@@ -69,7 +58,7 @@ class Context implements Serializable
      *
      * @return array
      */
-    public function all()
+    public function all(): array
     {
         return $this->storage;
     }
@@ -81,15 +70,12 @@ class Context implements Serializable
      *
      * @return bool
      */
-    public function has($name)
+    public function has(string $name): bool
     {
         return array_key_exists($name, $this->storage);
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function serialize()
+    public function serialize(): ?string
     {
         return serialize($this->storage);
     }
@@ -97,12 +83,12 @@ class Context implements Serializable
     /**
      * {@inheritdoc}
      */
-    public function unserialize($serialized)
+    public function unserialize($serialized): void
     {
         $this->storage = unserialize($serialized);
     }
 
-    public function __serialize()
+    public function __serialize(): array
     {
         return [$this->serialize()];
     }

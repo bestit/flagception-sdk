@@ -4,61 +4,41 @@ namespace FeatureTox\Activator;
 
 use FeatureTox\Model\Context;
 
-/**
- * Class ChainActivator
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Activator
- */
 class ChainActivator implements FeatureActivatorInterface
 {
     /**
      * At least one activator must return true to activating the feature (default)
      */
-    const STRATEGY_FIRST_MATCH = 1;
+    public const STRATEGY_FIRST_MATCH = 1;
 
     /**
      * All activators must return true to activating the feature
      */
-    const STRATEGY_ALL_MATCH = 2;
+    public const STRATEGY_ALL_MATCH = 2;
 
     /**
      * The reserved name for strategy override via context
      */
-    const CONTEXT_STRATEGY_NAME = 'chain_strategy';
+    public const CONTEXT_STRATEGY_NAME = 'chain_strategy';
 
     /**
      * Ordered array of feature activators
      *
      * @var FeatureActivatorInterface[]
      */
-    private $bag = [];
+    private array $bag = [];
 
     /**
      * The used strategy
-     *
-     * @var int
      */
-    private $strategy;
+    private int $strategy;
 
-    /**
-     * ChainActivator constructor.
-     *
-     * @param int $strategy
-     */
-    public function __construct($strategy = self::STRATEGY_FIRST_MATCH)
+    public function __construct(int $strategy = self::STRATEGY_FIRST_MATCH)
     {
         $this->strategy = $strategy;
     }
 
-    /**
-     * Add activator
-     *
-     * @param FeatureActivatorInterface $activator
-     *
-     * @return void
-     */
-    public function add(FeatureActivatorInterface $activator)
+    public function add(FeatureActivatorInterface $activator): void
     {
         $this->bag[] = $activator;
     }
@@ -68,23 +48,17 @@ class ChainActivator implements FeatureActivatorInterface
      *
      * @return FeatureActivatorInterface[]
      */
-    public function getActivators()
+    public function getActivators(): array
     {
         return $this->bag;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'chain';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function isActive($name, Context $context)
+    public function isActive($name, Context $context): bool
     {
         $strategy = $context->get(self::CONTEXT_STRATEGY_NAME, $this->strategy);
 

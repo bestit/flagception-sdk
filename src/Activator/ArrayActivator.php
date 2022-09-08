@@ -4,43 +4,21 @@ namespace FeatureTox\Activator;
 
 use FeatureTox\Model\Context;
 
-/**
- * Class ArrayActivator
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Activator
- */
 class ArrayActivator implements FeatureActivatorInterface
 {
-    /**
-     * Array of features
-     *
-     * @var array
-     */
-    private $features;
+    private array $features;
 
-    /**
-     * ArrayActivator constructor.
-     *
-     * @param array $features
-     */
     public function __construct(array $features = [])
     {
         $this->features = $features;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'array';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function isActive($name, Context $context)
+    public function isActive($name, Context $context): bool
     {
         if (array_key_exists($name, $this->features)) {
             return filter_var($this->features[$name], FILTER_VALIDATE_BOOLEAN);

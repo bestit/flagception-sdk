@@ -8,7 +8,7 @@ use FeatureTox\Model\Context;
 /**
  * Interface ConstraintResolverInterface
  *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
+ * @author Michel Chowanski <michel.chowanski@office-partner.de>
  * @package FeatureTox\Constraint
  */
 interface ConstraintResolverInterface
@@ -22,5 +22,5 @@ interface ConstraintResolverInterface
      * @return bool
      * @throws ConstraintSyntaxException
      */
-    public function resolve($constraint, Context $context);
+    public function resolve($constraint, Context $context): bool;
 }

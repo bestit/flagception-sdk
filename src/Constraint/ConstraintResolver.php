@@ -7,35 +7,16 @@ use FeatureTox\Model\Context;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Symfony\Component\ExpressionLanguage\SyntaxError;
 
-/**
- * Class ConstraintResolver
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Constraint
- */
 class ConstraintResolver implements ConstraintResolverInterface
 {
-    /**
-     * The expression language parser
-     *
-     * @var ExpressionLanguage
-     */
-    private $expressionLanguage;
+    private ExpressionLanguage $expressionLanguage;
 
-    /**
-     * ConstraintResolver constructor.
-     *
-     * @param ExpressionLanguage $expressionLanguage
-     */
     public function __construct(ExpressionLanguage $expressionLanguage)
     {
         $this->expressionLanguage = $expressionLanguage;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function resolve($constraint, Context $context)
+    public function resolve($constraint, Context $context): bool
     {
         try {
             return $this->expressionLanguage->evaluate($constraint, array_merge(

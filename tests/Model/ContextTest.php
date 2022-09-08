@@ -6,12 +6,6 @@ use FeatureTox\Exception\AlreadyDefinedException;
 use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class ContextTest
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Model
- */
 class ContextTest extends TestCase
 {
     /**

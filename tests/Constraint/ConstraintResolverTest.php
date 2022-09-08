@@ -9,12 +9,6 @@ use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-/**
- * Class ConstraintResolverTest
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Constraint
- */
 class ConstraintResolverTest extends TestCase
 {
     /**

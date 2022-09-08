@@ -5,56 +5,28 @@ namespace FeatureTox\Activator;
 use FeatureTox\Exception\InvalidArgumentException;
 use FeatureTox\Model\Context;
 
-/**
- * Activator for fetching feature states by cookie
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Activator
- */
 class CookieActivator implements FeatureActivatorInterface
 {
     /**
      * Activator should act as whitelist
      */
-    const WHITELIST = 'whitelist';
+    public const WHITELIST = 'whitelist';
 
     /**
      * Activator should act as blacklist
      */
-    const BLACKLIST = 'blacklist';
+    public const BLACKLIST = 'blacklist';
+
+    private array $features;
+
+    private string $name;
+
+    private string $separator;
+
+    private string $mode;
 
     /**
-     * Features collection
-     *
-     * @var array
-     */
-    private $features;
-
-    /**
-     * Cookie name
-     *
-     * @var string
-     */
-    private $name;
-
-    /**
-     * Cookie separator
-     *
-     * @var string
-     */
-    private $separator;
-
-    /**
-     * Mode (whitelist / blacklist)
-     *
-     * @var string
-     */
-    private $mode;
-
-    /**
-     * The extractor
-     *
-     * @var callable
+     * @var callable|null
      */
     private $extractor;
 
@@ -71,9 +43,9 @@ class CookieActivator implements FeatureActivatorInterface
      */
     public function __construct(
         array $features,
-        $name = 'FeatureTox',
-        $separator = ',',
-        $mode = self::WHITELIST,
+        string $name = 'FeatureTox',
+        string $separator = ',',
+        string $mode = self::WHITELIST,
         callable $extractor = null
     ) {
         if (!in_array($mode, [self::BLACKLIST, self::WHITELIST], true)) {
@@ -100,18 +72,12 @@ class CookieActivator implements FeatureActivatorInterface
         };
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'cookie';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function isActive($name, Context $context)
+    public function isActive($name, Context $context): bool
     {
         // Disable features which aren't whitelisted
         if ($this->mode === self::WHITELIST && !in_array($name, $this->features, true)) {

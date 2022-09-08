@@ -5,44 +5,22 @@ namespace FeatureTox\Activator;
 use FeatureTox\Constraint\ConstraintResolverInterface;
 use FeatureTox\Model\Context;
 
-/**
- * Class ConstraintActivator
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Activator
- */
 class ConstraintActivator implements FeatureActivatorInterface
 {
-    /**
-     * The constraint resolver
-     *
-     * @var ConstraintResolverInterface
-     */
-    private $resolver;
+    private ConstraintResolverInterface $resolver;
 
     /**
      * Features names and constraints
-     *
-     * @var array
      */
-    private $features;
+    private array $features;
 
-    /**
-     * ConstraintActivator constructor.
-     *
-     * @param ConstraintResolverInterface $resolver
-     * @param array $features
-     */
     public function __construct(ConstraintResolverInterface $resolver, array $features = [])
     {
         $this->resolver = $resolver;
         $this->features = $features;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'constraint';
     }
@@ -50,7 +28,7 @@ class ConstraintActivator implements FeatureActivatorInterface
     /**
      * {@inheritdoc}
      */
-    public function isActive($name, Context $context)
+    public function isActive($name, Context $context): bool
     {
         if (!array_key_exists($name, $this->features)) {
             return false;

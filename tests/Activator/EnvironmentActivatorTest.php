@@ -7,12 +7,6 @@ use FeatureTox\Activator\FeatureActivatorInterface;
 use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class EnvironmentActivatorTest
- *
- * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Activator
- */
 class EnvironmentActivatorTest extends TestCase
 {
     /**

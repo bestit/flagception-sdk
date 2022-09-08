@@ -6,12 +6,6 @@ use Exception;
 use FeatureTox\Exception\FeatureToxException;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class FeatureToxExceptionTest
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Exception
- */
 class FeatureToxExceptionTest extends TestCase
 {
     /**

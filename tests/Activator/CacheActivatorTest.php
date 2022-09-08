@@ -12,12 +12,6 @@ use Psr\Cache\CacheItemInterface;
 use Psr\Cache\CacheItemPoolInterface;
 use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
-/**
- * Tests the cache activator
- *
- * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Activator
- */
 class CacheActivatorTest extends TestCase
 {
     /**

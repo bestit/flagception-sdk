@@ -7,24 +7,15 @@ use FeatureTox\Model\Context;
 /**
  * Interface ContextDecoratorInterface
  *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
+ * @author Michel Chowanski <michel.chowanski@office-partner.de>
  * @package FeatureTox\Decorator
  */
 interface ContextDecoratorInterface
 {
-    /**
-     * Get decorator name
-     *
-     * @return string
-     */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Decorate the context object with global settings
-     *
-     * @param Context $context
-     *
-     * @return Context
      */
-    public function decorate(Context $context);
+    public function decorate(Context $context): Context;
 }

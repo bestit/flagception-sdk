@@ -4,20 +4,9 @@ namespace FeatureTox\Activator;
 
 use FeatureTox\Model\Context;
 
-/**
- * Interface FeatureActivatorInterface
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Activator
- */
 interface FeatureActivatorInterface
 {
-    /**
-     * Get unique activator name
-     *
-     * @return string
-     */
-    public function getName();
+    public function getName(): string;
 
     /**
      * Check if the given feature name is active
@@ -28,5 +17,5 @@ interface FeatureActivatorInterface
      *
      * @return bool
      */
-    public function isActive($name, Context $context);
+    public function isActive(string $name, Context $context): bool;
 }

@@ -14,7 +14,7 @@
     }
   ],
   "require": {
-    "php": "^7.0||^8.0",
+    "php": "^7.4||^8.0",
     "symfony/expression-language": ">=2.7",
     "psr/cache": "^1.0||^2.0||^3.0"
   },

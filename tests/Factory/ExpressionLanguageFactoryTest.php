@@ -7,12 +7,6 @@ use FeatureTox\Factory\ExpressionLanguageFactory;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-/**
- * Class ExpressionLanguageFactoryTest
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Factory
- */
 class ExpressionLanguageFactoryTest extends TestCase
 {
     /**

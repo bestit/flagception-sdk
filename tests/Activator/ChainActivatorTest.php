@@ -9,12 +9,6 @@ use FeatureTox\Exception\AlreadyDefinedException;
 use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class ChainActivatorTest
- *
- * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Activator
- */
 class ChainActivatorTest extends TestCase
 {
     /**

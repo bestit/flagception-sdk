@@ -5,39 +5,19 @@ namespace FeatureTox\Factory;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-/**
- * Class ExpressionLanguageFactory
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Factory
- */
 class ExpressionLanguageFactory
 {
     /**
-     * The expression language providers
-     *
      * @var ExpressionFunctionProviderInterface[]
      */
-    private $providers;
+    private array $providers;
 
-    /**
-     * Add provider
-     *
-     * @param ExpressionFunctionProviderInterface $provider
-     *
-     * @return void
-     */
-    public function addProvider(ExpressionFunctionProviderInterface $provider)
+    public function addProvider(ExpressionFunctionProviderInterface $provider): void
     {
         $this->providers[] = $provider;
     }
 
-    /**
-     * Create expression language
-     *
-     * @return ExpressionLanguage
-     */
-    public function create()
+    public function create(): ExpressionLanguage
     {
         $language = new ExpressionLanguage();
 

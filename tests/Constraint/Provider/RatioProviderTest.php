@@ -7,12 +7,6 @@ use PHPUnit\Framework\TestCase;
 use Symfony\Component\ExpressionLanguage\ExpressionFunctionProviderInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-/**
- * Class RatioProviderTest
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Constraint\Provider
- */
 class RatioProviderTest extends TestCase
 {
     /**

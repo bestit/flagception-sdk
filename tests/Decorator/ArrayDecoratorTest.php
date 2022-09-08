@@ -1,20 +1,12 @@
 <?php
 
-namespace FeatureTox\Tests\Activator;
+namespace FeatureTox\Tests\Decorator;
 
-use FeatureTox\Activator\ArrayActivator;
-use FeatureTox\Activator\FeatureActivatorInterface;
 use FeatureTox\Decorator\ArrayDecorator;
 use FeatureTox\Decorator\ContextDecoratorInterface;
 use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class ArrayDecoratorTest
- *
- * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Activator
- */
 class ArrayDecoratorTest extends TestCase
 {
     /**

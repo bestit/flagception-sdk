@@ -1,6 +1,6 @@
 <?php
 
-namespace FeatureTox\Tests\Listener;
+namespace FeatureTox\Tests\Manager;
 
 use FeatureTox\Activator\ArrayActivator;
 use FeatureTox\Activator\FeatureActivatorInterface;
@@ -11,12 +11,6 @@ use FeatureTox\Manager\FeatureManagerInterface;
 use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class FeatureManagerTest
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Listener
- */
 class FeatureManagerTest extends TestCase
 {
     /**
@@ -128,11 +122,11 @@ class AssertFeatureExistsContextDecorator implements ContextDecoratorInterface
         $this->feature = $feature;
     }
 
-    public function getName() {
+    public function getName(): string {
         return 'foobar';
     }
 
-    public function decorate(Context $context)
+    public function decorate(Context $context): Context
     {
         TestCase::assertTrue($context->has('_feature'));
         TestCase::assertSame($this->feature, $context->get('_feature'));

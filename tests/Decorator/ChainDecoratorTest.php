@@ -1,6 +1,6 @@
 <?php
 
-namespace FeatureTox\Tests\Activator;
+namespace FeatureTox\Tests\Decorator;
 
 use FeatureTox\Decorator\ArrayDecorator;
 use FeatureTox\Decorator\ChainDecorator;
@@ -8,12 +8,6 @@ use FeatureTox\Decorator\ContextDecoratorInterface;
 use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class ChainDecoratorTest
- *
- * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Activator
- */
 class ChainDecoratorTest extends TestCase
 {
     /**

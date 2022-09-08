@@ -4,52 +4,29 @@ namespace FeatureTox\Activator;
 
 use FeatureTox\Model\Context;
 
-/**
- * Class EnvironmentActivator
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Activator
- */
 class EnvironmentActivator implements FeatureActivatorInterface
 {
-    /**
-     * Variable array mapping
-     *
-     * @var array
-     */
-    private $variables;
+    private array $variables;
 
     /**
      * Force environment request
      *
      * @var boolean
      */
-    private $forceRequest;
+    private bool $forceRequest;
 
-    /**
-     * EnvironmentActivator constructor.
-     *
-     * @param array $variables
-     * @param bool $forceRequest
-     */
-    public function __construct(array $variables = [], $forceRequest = false)
+    public function __construct(array $variables = [], bool $forceRequest = false)
     {
         $this->variables = $variables;
         $this->forceRequest = $forceRequest;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
+    public function getName(): string
     {
         return 'environment';
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function isActive($name, Context $context)
+    public function isActive($name, Context $context): bool
     {
         if ($this->forceRequest === false && !array_key_exists($name, $this->variables)) {
             return false;
@@ -63,7 +40,7 @@ class EnvironmentActivator implements FeatureActivatorInterface
     }
 
     /**
-     * Get enviroment value by $_ENV or getenv()
+     * Get environment value by $_ENV or getenv()
      *
      * @param $name
      *

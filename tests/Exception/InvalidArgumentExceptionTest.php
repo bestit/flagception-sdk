@@ -6,12 +6,6 @@ use FeatureTox\Exception\InvalidArgumentException;
 use FeatureTox\Exception\FeatureToxException;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class InvalidArgumentExceptionTest
- *
- * @author Michel Chowanski <michel.chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Exception
- */
 class InvalidArgumentExceptionTest extends TestCase
 {
     /**

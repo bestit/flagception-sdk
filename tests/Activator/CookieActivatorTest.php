@@ -9,12 +9,6 @@ use FeatureTox\Extractor\Cookie\CookieExtractorInterface;
 use FeatureTox\Model\Context;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Tests the cookie activator
- *
- * @author Michel Chowanski <chowanski@bestit-online.de>
- * @package FeatureTox\Tests\Activator
- */
 class CookieActivatorTest extends TestCase
 {
     /**
