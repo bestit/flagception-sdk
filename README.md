@@ -1,10 +1,10 @@
 # FeatureTox
 FeatureTox is a simple and powerful feature toggle library. Only a few lines of configuration necessary - and still very flexible and expandable.
 
-[![Latest Stable Version](https://poser.pugx.org/playox/FeatureTox/v/stable)](https://packagist.org/packages/playox/FeatureTox)
+[![Latest Stable Version](https://poser.pugx.org/playox/feature-tox/v/stable)](https://packagist.org/packages/playox/feature-tox)
 [![Testing FeatureTox](https://github.com/playox/feature-tox/actions/workflows/php.yml/badge.svg?branch=master)](https://github.com/playox/feature-tox/actions/workflows/php.yml)
-[![Total Downloads](https://poser.pugx.org/playox/FeatureTox/downloads)](https://packagist.org/packages/playox/FeatureTox)
-[![License](https://poser.pugx.org/playox/FeatureTox/license)](https://packagist.org/packages/playox/FeatureTox)
+[![Total Downloads](https://poser.pugx.org/playox/feature-tox/downloads)](https://packagist.org/packages/playox/feature-tox)
+[![License](https://poser.pugx.org/playox/feature-tox/license)](https://packagist.org/packages/playox/feature-tox)
 
 Download the library
 ---------------------------
