@@ -43,3 +43,6 @@ jobs:
 
       - name: Run tests
         run: composer test
+
+      - name: phpunit-coverage-badge
+        run: curl -Os https://uploader.codecov.io/latest/linux/codecov && chmod +x codecov && ./codecov
