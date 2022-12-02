@@ -3,7 +3,6 @@
 namespace Flagception\Model;
 
 use Flagception\Exception\AlreadyDefinedException;
-use Serializable;
 
 /**
  * Class Context
@@ -11,7 +10,7 @@ use Serializable;
  * @author Michel Chowanski <michel.chowanski@bestit-online.de>
  * @package Flagception\Model
  */
-class Context implements Serializable
+class Context
 {
     /**
      * Storage for all context values
@@ -102,12 +101,12 @@ class Context implements Serializable
         $this->storage = unserialize($serialized);
     }
 
-    public function __serialize()
+    public function __serialize(): array
     {
         return [$this->serialize()];
     }
 
-    public function __unserialize(array $data)
+    public function __unserialize(array $data): void
     {
         $this->unserialize($data[0]);
     }
